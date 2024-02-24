@@ -22,8 +22,9 @@ abstract class AppRouter {
           transitionDuration: kTransitionDuration,
           child: const HomeView(),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: CurveTween(curve: Curves.easeInOut).animate(animation),
+            return SlideTransition(
+              position: animation.drive(
+                  Tween(begin: const Offset(1, 0), end: const Offset(0, 0))),
               child: child,
             );
           },
